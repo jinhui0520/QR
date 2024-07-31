@@ -50,6 +50,14 @@ def wechat():
             response = make_response(response_xml)
             response.content_type = 'application/xml'
             return response
+            
+@app.route('/healthz')
+def health_check():
+    return 'ok', 200
 
+@app.route('/ready')
+def readiness_check():
+    return 'ok', 200
+    
 if __name__ == '__main__':
     app.run(port=80, debug=True)
